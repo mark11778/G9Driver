@@ -2,7 +2,7 @@ import serial
 import time
 
 # Open serial port
-ser = serial.Serial('/dev/ttyAMA10', 9600, timeout=1)
+ser = serial.Serial('/dev/serial0', 9600, timeout=1)
 
 time.sleep(2)  # Wait for the connection to establish
 
