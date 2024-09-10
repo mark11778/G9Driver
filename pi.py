@@ -1,6 +1,13 @@
-import serial.tools.list_ports
+import serial
+import time
 
-ports = serial.tools.list_ports.comports()
+# Open serial port
+ser = serial.Serial('/dev/ttyAMA10', 9600, timeout=1)
 
-for port, desc, hwid in sorted(ports):
-    print(f"{port}: {desc} [{hwid}]")
+time.sleep(2)  # Wait for the connection to establish
+
+while True:
+    # Send data
+    print("sending data")
+    ser.write(b'Hello from Raspberry Pi\n')
+    time.sleep(1)  # Delay between sends

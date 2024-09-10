@@ -1,6 +1,11 @@
-import serial.tools.list_ports
+import serial
 
-ports = serial.tools.list_ports.comports()
+# Open serial port
+ser = serial.Serial('COM3', 9600, timeout=1)
 
-for port, desc, hwid in sorted(ports):
-    print(f"{port}: {desc} [{hwid}]")
+while True:
+    # Read data from the serial port
+    data = ser.readline().decode('utf-8').strip()
+    if data:
+        print(f"Received: {data}")
+
